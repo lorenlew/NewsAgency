@@ -12,7 +12,7 @@
 
             }
         ])
-        .controller('StoreController', [
+        .controller('NewsController', [
             '$http', function ($http) {
                 var self = this;
                 self.news = [];
@@ -31,6 +31,7 @@
                     self.article.date = (new Date()).toLocaleString();
                     self.article.tags = self.tagsToAttach;
                     news.push(self.article);
+                    self.tagsToAttach = [];
                     self.article = {};
                 };
 
@@ -40,6 +41,7 @@
                         self.tagsToAttach.push(self.tag);
                         self.tag = {};
                     }
+                    return false;
                 };
             }
         );

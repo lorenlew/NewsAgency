@@ -9,10 +9,12 @@
             'newsAgency.controllers'
         ]).
         config([
-            '$routeProvider', function ($routeProvider) {
-                $routeProvider.when('/view1', { templateUrl: 'partials/partial1.html', controller: 'MyCtrl1' });
-                $routeProvider.when('/view2', { templateUrl: 'partials/partial2.html', controller: 'MyCtrl2' });
-                $routeProvider.otherwise({ redirectTo: '/view1' });
+            '$routeProvider', function ($routeProvider)
+            {
+                $routeProvider.when('/home', { templateUrl: 'partials/home.html', controller: 'MyCtrl1' });
+                $routeProvider.when('/content1', { templateUrl: 'partials/content1.html', controller: '' });
+                $routeProvider.when('/content2', { templateUrl: 'partials/content2.html', controller: '' });
+                $routeProvider.otherwise({ redirectTo: '/home' });
             }
         ]);
 })();

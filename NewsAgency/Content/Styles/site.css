@@ -1,7 +1,7 @@
 ﻿.body-content {
     padding-left: 15px;
     padding-right: 15px;
-    margin: 0 auto;
+    margin-top: 15px;
 }
 
 body {
@@ -38,11 +38,16 @@ article {
     margin-left: 15px;
     margin-top: 5px;
     overflow: hidden;
+    border-radius: 50%;
 }
 
     article:hover {
         border: 3px solid cornflowerblue;
     }
+
+ul li {
+    list-style: none;
+}
 
 .clear {
     overflow: hidden;
@@ -59,4 +64,14 @@ article {
 .temp {
     background-color: #ffd700;
     background-color: rgba(255, 215, 0, 0.39);
+}
+
+.tag {
+    border: 2px solid #b6ff00;
+    border: 2px solid rgba(0, 148, 255, 0.41);
+}
+
+.news {
+    background-color: #adff2f;
+    background-color: rgba(173, 255, 47, 0.38);
 }
