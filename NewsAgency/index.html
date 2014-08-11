@@ -3,25 +3,84 @@
 <head>
     <title>
         News
-    </title>  
-    <link href="Content/Styles/bootstrap.united.css" rel="stylesheet" /> 
+    </title>
+    <link href="Content/Styles/bootstrap.united.css" rel="stylesheet" />
     <link href="Content/Styles/site.css" rel="stylesheet" />
 </head>
-<body>
-     
-    
-    
-    
-               
-    
-    
-    
-    
-    
-    
+<body ng-app="newsAgency">
+    <div class="container body-content modal-content">
+           
+        <div class="temp">
+            <ul class="clearfix ">
+                <li><a href="#/view1">view1</a></li>
+                <li><a href="#/view2">view2</a></li>
+            </ul>
+            <div ng-view></div>
+            <div>Angular seed app: v<span app-version></span></div>
+        </div>
+             
 
+        <div class="well well-lg half-width">
+            <label>Search by text<input type="text" ng-model="newsBodyFilter" /></label>
+            <label>Search by categories<input type="text" ng-model="newsCategoriesFilter" /></label>
+        </div>
+
+
+        <div ng-controller="StoreController as store">
+            <div class="clear">
+                <article class="well well-sm" ng-repeat="news in store.news | filter:{body: newsBodyFilter, tags: newsCategoriesFilter}">
+                    <h2 class="text-danger text-center">
+                        {{news.heading}}
+                    </h2>
+                    <p class="text-success">
+                        {{news.body}}
+                    </p>
+                    <p>
+                        <span ng-repeat="tag in news.tags">
+                            {{tag.name}}
+                        </span>
+                    </p>
+                    <p class="text-warning label label-success pull-right ">
+                        {{news.date }}
+                    </p>
+                </article>
+            </div>
+            <form name="articleForm" ng-controller="ArticleController as articleCtrl"
+                  ng-submit="articleForm.$valid && articleCtrl.addArticle(store.news)" class="well well-lg half-width" novalidate>
+                <h3 class="text-center">Add news</h3>
+                <label>Heading</label>
+                <input ng-model="articleCtrl.article.heading" type="text" name="body" required />
+                <label>Body</label>
+                <textarea ng-model="articleCtrl.article.body" name="body" required></textarea>
+                <label>Tags</label>
+                <div ng-repeat="tag in articleCtrl.tagsToAttach">
+                    <span>{{tag.name}}</span>
+                </div>
+                <input ng-model="articleCtrl.tag.name" class="inline" />
+                <button ng-click="articleCtrl.attachTag()" class="btn btn-warning ">Add tag</button>
+
+                <input type="submit" value="Submit" class="btn btn-success" />
+            </form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
     <script src="Content/Scripts/angularLib/angular.js"></script>
-    <script src="Content/Scripts/angularLib/angular-route.js"></script>    
-    <script src="Content/Scripts/app.js"></script>
+    <script src="Content/Scripts/angularLib/angular-route.js"></script>
+    <script src="Content/Scripts/angularApp/app.js"></script>
+    <script src="Content/Scripts/angularApp/services.js"></script>
+    <script src="Content/Scripts/angularApp/controllers.js"></script>
+    <script src="Content/Scripts/angularApp/filters.js"></script>
+    <script src="Content/Scripts/angularApp/directives.js"></script>
 </body>
 </html>

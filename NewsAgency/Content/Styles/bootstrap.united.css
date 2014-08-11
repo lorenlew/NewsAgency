@@ -21,11 +21,14 @@ details,
 figcaption,
 figure,
 footer,
+form,
 header,
 hgroup,
 main,
 nav,
 section,
+textarea,
+input,
 summary {
   display: block;
 }

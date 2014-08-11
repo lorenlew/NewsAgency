@@ -57,8 +57,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Scripts\_references.js" />
+    <Content Include="Content\Scripts\angularApp\app.js" />
+    <Content Include="Content\Scripts\angularApp\controllers.js" />
+    <Content Include="Content\Scripts\angularApp\directives.js" />
+    <Content Include="Content\Scripts\angularApp\filters.js" />
+    <Content Include="Content\Scripts\angularApp\services.js" />
     <Content Include="Content\Styles\bootstrap.united.css" />
-    <Content Include="Content\Scripts\app.js" />
     <Content Include="Content\Styles\site.css" />
     <Content Include="index.html" />
     <Content Include="Content\Scripts\angularLib\angular-animate.js" />
@@ -359,6 +364,8 @@
     <Content Include="Content\Scripts\angularLib\i18n\angular-locale_zh.js" />
     <Content Include="Content\Scripts\angularLib\i18n\angular-locale_zu-za.js" />
     <Content Include="Content\Scripts\angularLib\i18n\angular-locale_zu.js" />
+    <Content Include="partials\partial1.html" />
+    <Content Include="partials\partial2.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -376,6 +383,7 @@
     <Content Include="Content\Scripts\angularLib\angular-animate.min.js.map" />
     <Content Include="Content\Scripts\angularLib\angular.min.js.map" />
     <Content Include="packages.config" />
+    <Content Include="Content\TestData\testDataNews.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

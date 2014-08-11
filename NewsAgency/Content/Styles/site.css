@@ -1,1 +1,62 @@
-﻿
+﻿.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+}
+
+body {
+    background: #3b679e;
+    background: -moz-linear-gradient(45deg, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%);
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#3b679e), color-stop(50%,#2b88d9), color-stop(51%,#207cca), color-stop(100%,#7db9e8));
+    background: -webkit-linear-gradient(45deg, #3b679e 0%,#2b88d9 50%,#207cca 51%,#7db9e8 100%) background: -o-linear-gradient(45deg, #3b679e 0%,#2b88d9 50%,#207cca 51%,#7db9e8 100%);
+    background: -ms-linear-gradient(45deg, #3b679e 0%,#2b88d9 50%,#207cca 51%,#7db9e8 100%);
+    background: linear-gradient(45deg, #3b679e 0%,#2b88d9 50%,#207cca 51%,#7db9e8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', endColorstr='#7db9e8',GradientType=1 );
+}
+
+input,
+select {
+    max-width: 280px;
+}
+
+input {
+    min-width: 400px;
+}
+
+textarea {
+    min-width: 500px;
+    max-width: 800px;
+    min-height: 100px;
+    max-height: 180px;
+}
+
+article {
+    width: 31%;
+    float: left;
+    height: 360px;
+    margin-right: 10px;
+    margin-left: 15px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+    article:hover {
+        border: 3px solid cornflowerblue;
+    }
+
+.clear {
+    overflow: hidden;
+}
+
+.inline {
+    display: inline;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.temp {
+    background-color: #ffd700;
+    background-color: rgba(255, 215, 0, 0.39);
+}
