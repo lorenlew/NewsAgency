@@ -7,31 +7,32 @@
     <link href="Content/Styles/bootstrap.united.css" rel="stylesheet" />
     <link href="Content/Styles/site.css" rel="stylesheet" />
     <link href="Content/Styles/bpopup.css" rel="stylesheet" />
+    <link href="Content/Styles/font-awesome.css" rel="stylesheet" />
 </head>
-<body ng-app="newsAgency">
+<body ng-app="app">
     <div class="container body-content modal-content">
 
-        <div class="temp">
+        <div class="dynamic-view">
             <div class="label label-default pull-right">App version: v<span app-version></span></div>
             <ul>
-                <li class="inline"><a href="#/home" class="btn btn-primary">Home</a></li>
-                <li class="inline"><a href="#/content1" class="btn btn-primary">content1</a></li>
-                <li class="inline"><a href="#/content2" class="btn btn-primary">content2</a></li>
+                <li ui-sref="home" class="btn btn-primary fa fa-home fa-2x"></li>
+                <li ui-sref="state1" class="btn btn-primary fa fa-folder-open-o fa-2x"></li>
+                <li ui-sref="state2" class="btn btn-primary fa fa-folder-open-o fa-2x"></li>
             </ul>
-            <div ng-view class="well well-lg"></div>
+            <div ui-view class="well well-lg"></div>
         </div>
 
 
-        <div class="well well-lg half-width">
-            <label>Search by text<input type="text" ng-model="newsBodyFilter" /></label>
-            <label>Search by categories<input type="text" ng-model="newsCategoriesFilter" /></label>
-        </div>
+        <div ng-controller="NewsController as news">
+            <button id="addNews" class="btn btn-success fa fa-plus-square fa-2x" title="Add news"></button>
+            <button ng-click="news.toogleFilterVisibility()" class="btn btn-success fa fa-filter fa-2x" title="Show filter"></button>
+            <div class="well well-lg half-width" ng-show="news.isFilterVisible">
+                <label>Search by text<input type="text" ng-model="newsBodyFilter" /></label>
+                <label>Search by category<input type="text" ng-model="newsCategoriesFilter" /></label>
+            </div>
 
-        <button id="addNews" class="btn btn-success" title="Add news">Add news</button>
-
-        <div ng-controller="NewsController as store">
             <form id="popUp" name="articleForm" ng-controller="ArticleController as articleCtrl"
-                  ng-submit="articleForm.$valid && articleCtrl.addArticle(store.news)" class="well well-lg news half-width hide" novalidate>
+                  ng-submit="articleForm.$valid && articleCtrl.addArticle(news.news)" class="well well-lg news half-width hide" novalidate>
                 <span class="button b-close"><span>X</span></span>
                 <h2 class="text-center">Add news</h2>
                 <label>Heading</label>
@@ -45,12 +46,11 @@
                     </span>
                 </div>
                 <input ng-model="articleCtrl.tag.name" class="inline" />
-
                 <button type="button" ng-click="articleCtrl.attachTag()" class="btn btn-warning ">Add tag</button>
-                <button  type="submit" class="btn btn-success">Create</button>      <!--b-close-->
+                <button type="submit" class="btn btn-success">Create</button>      <!--b-close-->
             </form>
             <div class="clear">
-                <article class="well well-sm" ng-repeat="news in store.news | filter: {body: newsBodyFilter, tags: newsCategoriesFilter}">
+                <article class="well well-sm" ng-repeat="news in news.news | filter: {body: newsBodyFilter, tags: newsCategoriesFilter}">
                     <h2 class="text-danger text-center">
                         {{news.heading}}
                     </h2>
@@ -82,12 +82,17 @@
 
     </div>
     <script src="Content/Scripts/angularLib/angular.js"></script>
-    <script src="Content/Scripts/angularLib/angular-route.js"></script>
+    <script src="Content/Scripts/angularLib/angular-ui-router.js"></script>
+    <script src="Content/Scripts/angularLib/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="Content/Scripts/angularLib/angular-ui/ui-bootstrap.js"></script>
+
     <script src="Content/Scripts/angularApp/app.js"></script>
-    <script src="Content/Scripts/angularApp/services.js"></script>
-    <script src="Content/Scripts/angularApp/controllers.js"></script>
-    <script src="Content/Scripts/angularApp/filters.js"></script>
-    <script src="Content/Scripts/angularApp/directives.js"></script>
+    <script src="Content/Scripts/angularApp/news/news.js"></script>
+    <script src="Content/Scripts/angularApp/news/Version.Service.js"></script>
+    <script src="Content/Scripts/angularApp/news/News.Controller.js"></script>
+    <script src="Content/Scripts/angularApp/news/Article.Controller.js"></script>
+    <script src="Content/Scripts/angularApp/news/Interpolate.Filter.js"></script>
+    <script src="Content/Scripts/angularApp/news/AppVersion.Directive.js"></script>
 
     <script src="Content/Scripts/jquery-1.11.1.js"></script>
     <script src="Content/Scripts/jquery.bpopup.min.js"></script>
