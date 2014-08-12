@@ -31,41 +31,45 @@
                 <label>Search by category<input type="text" ng-model="newsCategoriesFilter" /></label>
             </div>
 
-            <form id="popUp" name="articleForm" ng-controller="ArticleController as articleCtrl"
-                  ng-submit="articleForm.$valid && articleCtrl.addArticle(news.news)" class="well well-lg news half-width hide" novalidate>
-                <span class="button b-close"><span>X</span></span>
-                <h2 class="text-center">Add news</h2>
-                <label>Heading</label>
-                <input ng-model="articleCtrl.article.heading" type="text" name="body" required />
-                <label>Body</label>
-                <textarea ng-model="articleCtrl.article.body" name="body" required></textarea>
-                <div>
-                    <label>Tags</label>
-                    <span ng-repeat="tag in articleCtrl.tagsToAttach">
-                        <span class="label label-warning tag">{{tag.name}}</span>
-                    </span>
-                </div>
-                <input ng-model="articleCtrl.tag.name" class="inline" />
-                <button type="button" ng-click="articleCtrl.attachTag()" class="btn btn-warning ">Add tag</button>
-                <button type="submit" class="btn btn-success">Create</button>      <!--b-close-->
-            </form>
-            <div class="clear">
-                <article class="well well-sm" ng-repeat="news in news.news | filter: {body: newsBodyFilter, tags: newsCategoriesFilter}">
-                    <h2 class="text-danger text-center">
-                        {{news.heading}}
-                    </h2>
-                    <p class="text-success">
-                        {{news.body}}
-                    </p>
-                    <p>
-                        <span ng-repeat="tag in news.tags" class="tag">
-                            {{tag.name}}
+            <div ng-controller="ArticleController as articleCtrl">
+                <form id="popUp" name="articleForm"
+                      ng-submit="articleForm.$valid && articleCtrl.addArticle(news.news)" class="well well-lg news half-width hide" novalidate>
+                    <span class="button b-close"><span>X</span></span>
+                    <h2 class="text-center">Add news</h2>
+                    <label>Heading</label>
+                    <input ng-model="articleCtrl.article.heading" type="text" name="body" required />
+                    <label>Body</label>
+                    <textarea ng-model="articleCtrl.article.body" name="body" required></textarea>
+                    <div>
+                        <label>Tags</label>
+                        <span ng-repeat="tag in articleCtrl.tagsToAttach">
+                            <span class="label label-warning tag">{{tag.name}}</span>
                         </span>
-                    </p>
-                    <span class="text-warning label label-success pull-right ">
-                        {{news.date }}
-                    </span>
-                </article>
+                    </div>
+                    <input ng-model="articleCtrl.tag.name" class="inline" />
+                    <button type="button" ng-click="articleCtrl.attachTag()" class="btn btn-warning ">Add tag</button>
+                    <button type="submit" class="btn btn-success">Create</button>      <!--b-close-->
+                </form>  
+
+                <div class="clear">
+                    <article class="well well-sm" ng-repeat="news in news.news | filter: {body: newsBodyFilter, tags: newsCategoriesFilter}">
+                        <h3 class="text-danger text-center">
+                            {{news.heading}}
+                        </h3>
+                        <button ng-click="articleCtrl.setVisableArticle($index)" class="fa fa-arrow-right" title="Show news"></button>
+                        <p class="text-success" ng-show="articleCtrl.visableArticle == $index">
+                            {{news.body}}
+                        </p>
+                        <p>
+                            <span ng-repeat="tag in news.tags" class="tag">
+                                {{tag.name}}
+                            </span>
+                        </p>
+                        <span class="text-warning label label-success date">
+                            {{news.date }}
+                        </span>
+                    </article>
+                </div>
             </div>
         </div>
 
@@ -81,7 +85,8 @@
 
 
     </div>
-    <script src="Content/Scripts/angularLib/angular.js"></script>
+    <script src="Content/Scripts/angularLib/angular.js"></script>  
+    <script src="Content/Scripts/angularLib/angular-animate.js"></script>
     <script src="Content/Scripts/angularLib/angular-ui-router.js"></script>
     <script src="Content/Scripts/angularLib/angular-ui/ui-bootstrap-tpls.js"></script>
     <script src="Content/Scripts/angularLib/angular-ui/ui-bootstrap.js"></script>
