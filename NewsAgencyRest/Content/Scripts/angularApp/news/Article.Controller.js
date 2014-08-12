@@ -1,5 +1,5 @@
 ﻿angular.module('news')
-    .controller('ArticleController', function ($scope) {
+    .controller('ArticleController', function () {
             'use strict';
             var self = this;
             self.article = {};
@@ -15,6 +15,7 @@
                     self.visableArticle = selected;
                 }
             };
+
             self.addArticle = function (news) {
                 self.article.date = (new Date()).toLocaleString();
                 self.article.tags = self.tagsToAttach;

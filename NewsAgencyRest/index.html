@@ -25,7 +25,8 @@
 
         <div ng-controller="NewsController as news">
             <button id="addNews" class="btn btn-success fa fa-plus-square fa-2x" title="Add news"></button>
-            <button ng-click="news.toogleFilterVisibility()" class="btn btn-success fa fa-filter fa-2x" title="Show filter"></button>
+            <button ng-click="news.toogleFilterVisibility()"
+                    ng-class="news.isFilterVisible ? 'btn-danger': 'btn-success'" class="btn fa fa-filter fa-2x" title="Show filter"></button>
             <div class="well well-lg half-width" ng-show="news.isFilterVisible">
                 <label>Search by text<input type="text" ng-model="newsBodyFilter" /></label>
                 <label>Search by category<input type="text" ng-model="newsCategoriesFilter" /></label>
@@ -49,14 +50,15 @@
                     <input ng-model="articleCtrl.tag.name" class="inline" />
                     <button type="button" ng-click="articleCtrl.attachTag()" class="btn btn-warning ">Add tag</button>
                     <button type="submit" class="btn btn-success">Create</button>      <!--b-close-->
-                </form>  
+                </form>
 
                 <div class="clear">
                     <article class="well well-sm" ng-repeat="news in news.news | filter: {body: newsBodyFilter, tags: newsCategoriesFilter}">
                         <h3 class="text-danger text-center">
                             {{news.heading}}
                         </h3>
-                        <button ng-click="articleCtrl.setVisableArticle($index)" class="fa fa-arrow-right" title="Show news"></button>
+                        <button ng-click="articleCtrl.setVisableArticle($index)"
+                                ng-class="articleCtrl.visableArticle === $index ? 'btn-danger' : 'btn-success'" class="fa fa-arrow-right" title="Show news"></button>
                         <p class="text-success" ng-show="articleCtrl.visableArticle == $index">
                             {{news.body}}
                         </p>
@@ -85,7 +87,7 @@
 
 
     </div>
-    <script src="Content/Scripts/angularLib/angular.js"></script>  
+    <script src="Content/Scripts/angularLib/angular.js"></script>
     <script src="Content/Scripts/angularLib/angular-animate.js"></script>
     <script src="Content/Scripts/angularLib/angular-ui-router.js"></script>
     <script src="Content/Scripts/angularLib/angular-ui/ui-bootstrap-tpls.js"></script>

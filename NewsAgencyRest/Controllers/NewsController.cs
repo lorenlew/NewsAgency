@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Mime;
-using System.Web;
+﻿using System.IO;
 using System.Web.Http;
-using System.Web.Http.Results;
 using System.Web.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace NewsAgencyRest.Controllers
 {
@@ -19,7 +9,7 @@ namespace NewsAgencyRest.Controllers
         // GET api/news
         public JsonResult Get()
         {
-            const string virtualPath = "/Content/TestData/testDataNews.json";
+            const string virtualPath = "/Content/TestData/news.json";
             string physicalPath = System.Web.Hosting.HostingEnvironment.MapPath(virtualPath);
             var news = File.ReadAllText(physicalPath);
             var json = new JsonResult()
