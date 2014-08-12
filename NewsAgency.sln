@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAgency", "NewsAgency\NewsAgency.csproj", "{3A9AD191-688C-4807-B2EA-CADE9072AD61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsAgencyRest", "NewsAgencyRest\NewsAgencyRest.csproj", "{429F6C4B-08F9-414B-9280-E6218CAC6673}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3A9AD191-688C-4807-B2EA-CADE9072AD61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A9AD191-688C-4807-B2EA-CADE9072AD61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A9AD191-688C-4807-B2EA-CADE9072AD61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{429F6C4B-08F9-414B-9280-E6218CAC6673}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{429F6C4B-08F9-414B-9280-E6218CAC6673}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{429F6C4B-08F9-414B-9280-E6218CAC6673}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{429F6C4B-08F9-414B-9280-E6218CAC6673}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
