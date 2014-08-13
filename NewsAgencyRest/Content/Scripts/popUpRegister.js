@@ -1,8 +1,8 @@
 ﻿(function ($) {
     'use strict';
 
-    $(function () {
-        $('#addNews').on('click', function (e) {
+    $(".addNews").each(function () {
+        $(this).on("click", function (e) {
             e.preventDefault();
             return popUp(e);
         });

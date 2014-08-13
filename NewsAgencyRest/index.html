@@ -23,43 +23,43 @@
         </div>
 
 
-        <div ng-controller="NewsController as news">
-            <button id="addNews" class="btn btn-success fa fa-plus-square fa-2x" title="Add news"></button>
-            <button ng-click="news.toogleFilterVisibility()"
-                    ng-class="news.isFilterVisible ? 'btn-danger': 'btn-success'" class="btn fa fa-filter fa-2x" title="Show filter"></button>
-            <div class="well well-lg half-width" ng-show="news.isFilterVisible">
+        <div ng-controller="NewsController as newsCtrl">
+            <button class="addNews btn btn-success fa fa-plus-square fa-2x" title="Add news"></button>
+            <button ng-click="newsCtrl.toogleFilterVisibility()"
+                    ng-class="newsCtrl.isFilterVisible ? 'btn-danger': 'btn-success'" class="btn fa fa-filter fa-2x" title="Show filter"></button>
+            <div class="well well-lg half-width" ng-show="newsCtrl.isFilterVisible">
                 <label>Search by text<input type="text" ng-model="newsBodyFilter" /></label>
                 <label>Search by category<input type="text" ng-model="newsCategoriesFilter" /></label>
             </div>
 
-            <div ng-controller="ArticleController as articleCtrl">
-                <form id="popUp" name="articleForm"
-                      ng-submit="articleForm.$valid && articleCtrl.addArticle(news.news)" class="well well-lg news half-width hide" novalidate>
-                    <span class="button b-close"><span>X</span></span>
-                    <h2 class="text-center">Add news</h2>
-                    <label>Heading</label>
-                    <input ng-model="articleCtrl.article.heading" type="text" name="body" required />
-                    <label>Body</label>
-                    <textarea ng-model="articleCtrl.article.body" name="body" required></textarea>
-                    <div>
-                        <label>Tags</label>
-                        <span ng-repeat="tag in articleCtrl.tagsToAttach">
-                            <span class="label label-warning tag">{{tag.name}}</span>
-                        </span>
-                    </div>
-                    <input ng-model="articleCtrl.tag.name" class="inline" />
-                    <button type="button" ng-click="articleCtrl.attachTag()" class="btn btn-warning ">Add tag</button>
-                    <button type="submit" class="btn btn-success">Create</button>      <!--b-close-->
-                </form>
+            <form id="popUp" name="articleForm"
+                  ng-submit="articleForm.$valid && newsCtrl.saveNews()" class="well well-lg news half-width hide" novalidate>
+                <span class="button b-close"><span>X</span></span>
+                <h2 class="text-center">Add news</h2>
+                <input type="hidden" ng-model="newsCtrl.newsInput.id" />
+                <label>Heading</label>
+                <input ng-model="newsCtrl.newsInput.heading" type="text" name="body" required />
+                <label>Body</label>
+                <textarea ng-model="newsCtrl.newsInput.body" name="body" required></textarea>
+                <div>
+                    <label>Tags</label>
+                    <span ng-repeat="tag in newsCtrl.tagStore">
+                        <span class="label label-warning tag">{{tag.name}}</span>
+                    </span>
+                </div>
+                <input ng-model="newsCtrl.tagInput.name" class="inline" />
+                <button type="button" ng-click="newsCtrl.addTag()" class="btn btn-warning ">Add tag</button>
+                <button type="submit" class="btn btn-success">Create</button>      <!--b-close-->
+            </form>
 
                 <div class="clear">
-                    <article class="well well-sm" ng-repeat="news in news.news | filter: {body: newsBodyFilter, tags: newsCategoriesFilter}">
+                    <article class="well well-sm" ng-repeat="news in newsCtrl.newsStore | filter: {body: newsBodyFilter, tags: newsCategoriesFilter}">
                         <h3 class="text-danger text-center">
                             {{news.heading}}
                         </h3>
-                        <button ng-click="articleCtrl.setVisableArticle($index)"
-                                ng-class="articleCtrl.visableArticle === $index ? 'btn-danger' : 'btn-success'" class="fa fa-arrow-right" title="Show news"></button>
-                        <p class="text-success" ng-show="articleCtrl.visableArticle == $index">
+                        <button ng-click="newsCtrl.setNewsVisable($index)"
+                                ng-class="newsCtrl.visableNewsNumber === $index ? 'btn-danger' : 'btn-success'" class="fa fa-arrow-right" title="Show news"></button>
+                        <p class="text-success" ng-show="newsCtrl.visableNewsNumber == $index">
                             {{news.body}}
                         </p>
                         <p>
@@ -69,10 +69,11 @@
                         </p>
                         <span class="text-warning label label-success date">
                             {{news.date }}
-                        </span>
+                        </span>    
+                        <button type="button" ng-click="newsCtrl.edit(news.id)" class="addNews pull-right">edit</button> 
+                        <button ng-click="newsCtrl.delete(news.id)" class="pull-right">delete</button>
                     </article>
                 </div>
-            </div>
         </div>
 
 
@@ -91,15 +92,19 @@
     <script src="Content/Scripts/angularLib/angular-animate.js"></script>
     <script src="Content/Scripts/angularLib/angular-ui-router.js"></script>
     <script src="Content/Scripts/angularLib/angular-ui/ui-bootstrap-tpls.js"></script>
-    <script src="Content/Scripts/angularLib/angular-ui/ui-bootstrap.js"></script>
+    <script src="Content/Scripts/angularLib/angular-ui/ui-bootstrap.js"></script> 
 
+    <script src="Content/Scripts/angularApp/news/news.js"></script>  
     <script src="Content/Scripts/angularApp/app.js"></script>
-    <script src="Content/Scripts/angularApp/news/news.js"></script>
-    <script src="Content/Scripts/angularApp/news/Version.Service.js"></script>
-    <script src="Content/Scripts/angularApp/news/News.Controller.js"></script>
-    <script src="Content/Scripts/angularApp/news/Article.Controller.js"></script>
-    <script src="Content/Scripts/angularApp/news/Interpolate.Filter.js"></script>
-    <script src="Content/Scripts/angularApp/news/AppVersion.Directive.js"></script>
+  
+    
+    <script src="Content/Scripts/angularApp/news/Tag-Service.js"></script>    
+    <script src="Content/Scripts/angularApp/news/Version-Service.js"></script>
+    <script src="Content/Scripts/angularApp/news/News-Service.js"></script> 
+    <script src="Content/Scripts/angularApp/news/Interpolate-Filter.js"></script>   
+    <script src="Content/Scripts/angularApp/news/AppVersion-Directive.js"></script>
+    <script src="Content/Scripts/angularApp/news/News-Controller.js"></script> 
+
 
     <script src="Content/Scripts/jquery-1.11.1.js"></script>
     <script src="Content/Scripts/jquery.bpopup.min.js"></script>

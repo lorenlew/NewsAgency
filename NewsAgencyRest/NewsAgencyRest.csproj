@@ -179,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Scripts\angularApp\news\Tag-Service.js" />
     <Content Include="Content\Scripts\angularLib\angular-animate.min.js.map" />
     <Content Include="Content\Scripts\angularLib\angular-cookies.min.js.map" />
     <Content Include="Content\Scripts\angularLib\angular-loader.min.js.map" />
@@ -189,14 +190,15 @@
     <Content Include="Content\Scripts\angularLib\angular.min.js.map" />
     <Content Include="Content\Scripts\angularLib\errors.json" />
     <Content Include="Content\Scripts\angularLib\version.json" />
+    <Content Include="Content\Scripts\angularApp\news\News-Service.js" />
     <None Include="Content\Scripts\_references.js" />
     <Content Include="Content\Scripts\angularApp\app.js" />
-    <Content Include="Content\Scripts\angularApp\news\AppVersion.Directive.js" />
-    <Content Include="Content\Scripts\angularApp\news\Article.Controller.js" />
-    <Content Include="Content\Scripts\angularApp\news\Interpolate.Filter.js" />
-    <Content Include="Content\Scripts\angularApp\news\News.Controller.js" />
+    <Content Include="Content\Scripts\angularApp\news\AppVersion-Directive.js" />
+    <Content Include="Content\Scripts\angularApp\news\Article-Controller.js" />
+    <Content Include="Content\Scripts\angularApp\news\Interpolate-Filter.js" />
+    <Content Include="Content\Scripts\angularApp\news\News-Controller.js" />
     <Content Include="Content\Scripts\angularApp\news\news.js" />
-    <Content Include="Content\Scripts\angularApp\news\Version.Service.js" />
+    <Content Include="Content\Scripts\angularApp\news\Version-Service.js" />
     <Content Include="Content\Scripts\angularLib\angular-animate.js" />
     <Content Include="Content\Scripts\angularLib\angular-animate.min.js" />
     <Content Include="Content\Scripts\angularLib\angular-cookies.js" />
