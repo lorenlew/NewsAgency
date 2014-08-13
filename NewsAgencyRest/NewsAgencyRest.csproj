@@ -179,6 +179,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Scripts\angularApp\guidGenerator.js" />
+    <Content Include="Content\Scripts\angularApp\Submit-Directive.js" />
     <Content Include="Content\Scripts\angularApp\news\Tag-Service.js" />
     <Content Include="Content\Scripts\angularLib\angular-animate.min.js.map" />
     <Content Include="Content\Scripts\angularLib\angular-cookies.min.js.map" />
@@ -194,7 +196,6 @@
     <None Include="Content\Scripts\_references.js" />
     <Content Include="Content\Scripts\angularApp\app.js" />
     <Content Include="Content\Scripts\angularApp\news\AppVersion-Directive.js" />
-    <Content Include="Content\Scripts\angularApp\news\Article-Controller.js" />
     <Content Include="Content\Scripts\angularApp\news\Interpolate-Filter.js" />
     <Content Include="Content\Scripts\angularApp\news\News-Controller.js" />
     <Content Include="Content\Scripts\angularApp\news\news.js" />

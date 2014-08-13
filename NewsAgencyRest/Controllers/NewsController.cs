@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
 
@@ -6,18 +7,19 @@ namespace NewsAgencyRest.Controllers
 {
     public class NewsController : ApiController
     {
+        private const string VirtualPath = "/Content/TestData/news.json";
+        private readonly string _physicalPath = System.Web.Hosting.HostingEnvironment.MapPath(VirtualPath);
+
         // GET api/news
         public JsonResult Get()
         {
-            const string virtualPath = "/Content/TestData/news.json";
-            string physicalPath = System.Web.Hosting.HostingEnvironment.MapPath(virtualPath);
-            var news = File.ReadAllText(physicalPath);
+
+            var news = File.ReadAllText(_physicalPath);
             var json = new JsonResult()
             {
                 Data = news,
                 JsonRequestBehavior =  JsonRequestBehavior.AllowGet
             };
-
             return json;
         }
 
@@ -28,8 +30,10 @@ namespace NewsAgencyRest.Controllers
         }
 
         // POST api/news
-        public void Post([FromBody]string value)
+        public void Post([FromBody]dynamic data)
         {
+            var newsStore = data.ToString();
+            File.WriteAllText(_physicalPath, newsStore);
         }
 
         // PUT api/news/5

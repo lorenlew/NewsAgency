@@ -20,7 +20,7 @@ select {
 }
 
 input {
-    min-width: 400px;
+    min-width: 530px;
 }
 
 textarea {
@@ -77,10 +77,16 @@ ul li {
     background-color: rgba(173, 255, 47, 0.38);
 }
 
-.date {
+.bottom-right {
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .ng-hide-add {
@@ -106,3 +112,6 @@ ul li {
     .ng-hide-remove.ng-hide-remove-active {
         opacity: 1;
     }
+
+.changeNews {
+}

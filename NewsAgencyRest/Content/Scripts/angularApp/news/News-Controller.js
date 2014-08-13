@@ -8,16 +8,15 @@
             self.tagInput = {};
             self.visableNewsNumber = null;
             self.isFilterVisible = false;
-            self.newsStore = newsService.getInit();
+            self.newsStore = [];
             self.tagStore = tagService.getAll();
             var newsPromise = newsService.getAll();
 
             newsPromise.then(function (newsData) {
                 self.newsStore = newsData;
-                newsService.newsStore = newsData;
             });
 
-            this.toogleFilterVisibility = function () {
+            self.toogleFilterVisibility = function () {
                 if (self.isFilterVisible === true) {
                     self.isFilterVisible = false;
                 } else {
@@ -26,7 +25,7 @@
 
             };
 
-            this.setNewsVisable = function (selected) {
+            self.setNewsVisable = function (selected) {
                 if (selected === self.visableNewsNumber) {
                     self.visableNewsNumber = null;
                 } else {
@@ -34,27 +33,29 @@
                 }
             };
 
+            self.clearForm = function () {
+                self.newsInput = {};
+                self.tagInput = {};
+                self.tagStore = [];
+                tagService.clearStore();
+            };
             self.saveNews = function () {
                 newsService.save(self.newsInput);
-                self.newsInput = {};
-                tagService.clearStore();
+                self.clearForm();
             };
 
             self.addTag = function () {
                 tagService.addTag(self.tagInput);
+                self.tagStore = tagService.getAll();
                 self.tagInput = {};
             };
 
             self.edit = function (id) {
-                var test = newsService.getById(id);
                 self.newsInput = angular.copy(newsService.getById(id));
             };
 
             self.delete = function (id) {
                 newsService.delete(id);
-                if (self.newsInput.id == id) {
-                    self.newsInput = {};
-                }
             };
         }
     ]);
