@@ -179,7 +179,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Scripts\angularApp\page-controls\ItemsPerPage-Filter.js" />
+    <Content Include="Content\Scripts\angularApp\page-controls\pageControls.js" />
+    <Content Include="Content\Scripts\angularApp\page-controls\Paginate-Directive.js" />
+    <Content Include="Content\Scripts\angularApp\page-controls\Pagination-Service.js" />
     <Content Include="Content\Scripts\angularApp\guidGenerator.js" />
+    <Content Include="Content\Scripts\angularApp\page-controls\PaginationControls-Directive.js" />
     <Content Include="Content\Scripts\angularApp\Submit-Directive.js" />
     <Content Include="Content\Scripts\angularApp\news\Tag-Service.js" />
     <Content Include="Content\Scripts\angularLib\angular-animate.min.js.map" />
@@ -513,6 +518,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="partials\dirPagination.tpl.html" />
     <Content Include="partials\home.html" />
     <Content Include="partials\state1.html" />
     <Content Include="partials\state2.html" />

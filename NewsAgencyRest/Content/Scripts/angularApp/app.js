@@ -4,8 +4,8 @@
     angular.module('app', [
             'news',
             'ui.router',
-            'ui.bootstrap',
-            'ngAnimate'
+            'ngAnimate',
+            'pageControls'
         ])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/home');

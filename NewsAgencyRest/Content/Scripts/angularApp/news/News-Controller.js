@@ -9,6 +9,9 @@
             self.visableNewsNumber = null;
             self.isFilterVisible = false;
             self.newsStore = [];
+            self.currentPage = 1;
+            self.pageSize = 10;
+
             self.tagStore = tagService.getAll();
             var newsPromise = newsService.getAll();
 

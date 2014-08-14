@@ -16,11 +16,7 @@ body {
 
 input,
 select {
-    max-width: 280px;
-}
-
-input {
-    min-width: 530px;
+    width: 280px;
 }
 
 textarea {
@@ -31,9 +27,6 @@ textarea {
 }
 
 article {
-    width: 31%;
-    float: left;
-    height: 360px;
     margin-right: 10px;
     margin-left: 15px;
     margin-top: 5px;
@@ -43,7 +36,13 @@ article {
 }
 
     article:hover {
-        border: 3px solid cornflowerblue;
+        -moz-transform: scale(0.98);
+        -ms-transform: scale(0.98);
+        -o-transform: scale(0.98);
+        -webkit-transform: scale(0.98);
+        transform: scale(0.98);
+        border: 3px solid #3b679e;
+        border: 3px solid rgba(59, 103, 158, 0.84);
     }
 
 ul li {
@@ -70,6 +69,10 @@ ul li {
 .tag {
     border: 2px solid #b6ff00;
     border: 2px solid rgba(0, 148, 255, 0.41);
+    background-color: burlywood;
+    border-radius: 20%;
+    margin: 2px;
+    padding: 2px;
 }
 
 .news {
@@ -83,10 +86,10 @@ ul li {
     right: 0;
 }
 
-.bottom-left {
+.upper-right {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    top: 0;
+    right: 0;
 }
 
 .ng-hide-add {
@@ -114,4 +117,8 @@ ul li {
     }
 
 .changeNews {
+}
+
+#page-number {
+    width: 80px;
 }

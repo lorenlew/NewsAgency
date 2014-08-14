@@ -24,14 +24,20 @@
 
 
         <div ng-controller="NewsController as newsCtrl">
-            <button ng-click="newsCtrl.clearForm()" class="changeNews btn btn-success fa fa-plus-square fa-2x" title="Add news"></button>
-            <button ng-click="newsCtrl.toogleFilterVisibility()"
-                    ng-class="newsCtrl.isFilterVisible ? 'btn-danger': 'btn-success'" class="btn fa fa-filter fa-2x" title="Show filter"></button>
-            <div class="well well-lg half-width" ng-show="newsCtrl.isFilterVisible">
-                <label>Search by text<input type="text" ng-model="newsBodyFilter" /></label>
-                <label>Search by category<input type="text" ng-model="newsCategoriesFilter" /></label>
+            <div class="clear">
+                <button ng-click="newsCtrl.clearForm()" class="changeNews btn btn-success fa fa-plus-square fa-2x" title="Add news"></button>
+                <button ng-click="newsCtrl.toogleFilterVisibility()"
+                        ng-class="newsCtrl.isFilterVisible ? 'btn-danger': 'btn-success'" class="btn fa fa-filter fa-2x" title="Show filter"></button>
+                <span class="pull-right">
+                    <label class="label label-default">items per page:</label>
+                    <input id="page-number" type="number" min="1" max="100" ng-model="newsCtrl.pageSize">
+                </span>
+                <div class="well well-lg half-width" ng-show="newsCtrl.isFilterVisible">
+                    <label>Search by text</label>
+                    <input type="text" ng-model="newsBodyFilter" />
+                    <label>Search by category<input type="text" ng-model="newsCategoriesFilter" /></label>
+                </div>
             </div>
-
             <form id="popUp" name="articleForm"
                   custom-submit="articleForm.$valid && newsCtrl.saveNews()" class="well well-lg news half-width hide" novalidate>
                 <span class="button b-close"><span>X</span></span>
@@ -40,7 +46,7 @@
                 <label>Heading</label>
                 <input ng-model="newsCtrl.newsInput.heading" type="text" name="body" required ng-maxlength=500 />
                 <label>Body</label>
-                <textarea ng-model="newsCtrl.newsInput.body" name="body" required ng-maxlength=1000></textarea>
+                <textarea ng-model="newsCtrl.newsInput.body" name="body" required ng-maxlength=10000></textarea>
                 <div>
                     <label>Tags</label>
                     <span ng-repeat="tag in newsCtrl.newsInput.tags">
@@ -55,13 +61,13 @@
                 <button type="submit" class="btn btn-success fa fa-check-square" title="Create"></button>
             </form>
 
-            <div class="clear">
-                <article class="well well-sm" ng-repeat="news in newsCtrl.newsStore| filter: {body: newsBodyFilter, tags: newsCategoriesFilter}">
+            <div class="clear ">
+                <article class="well well-sm" dir-paginate="news in newsCtrl.newsStore | filter: {body: newsBodyFilter, tags: newsCategoriesFilter} | itemsPerPage: newsCtrl.pageSize" current-page="newsCtrl.currentPage">
                     <h3 class="text-danger text-center">
                         {{news.heading}}
                     </h3>
                     <button ng-click="newsCtrl.setNewsVisable($index)"
-                            ng-class="newsCtrl.visableNewsNumber === $index ? 'btn-danger' : 'btn-success'" class="fa fa-level-down" title="Show news"></button>
+                            ng-class="newsCtrl.visableNewsNumber === $index ? 'btn-danger' : 'btn-success'" class="btn fa fa-level-down" title="Show news"></button>
                     <p class="text-success" ng-show="newsCtrl.visableNewsNumber == $index">
                         {{news.body}}
                     </p>
@@ -73,11 +79,16 @@
                     <span class="text-warning label label-success bottom-right">
                         {{news.date }}
                     </span>
-                    <div class="bottom-left">
+                    <div class="upper-right">
                         <button type="button" ng-click="newsCtrl.edit(news.id)" class="btn btn-warning changeNews fa fa-edit" title="edit"></button>
                         <button ng-click="newsCtrl.delete(news.id)" class="btn btn-danger fa fa-trash-o" title="delete"></button>
                     </div>
                 </article>
+                <div>
+                    <div class="text-center">
+                        <dir-pagination-controls boundary-links="true" template-url="partials/dirPagination.tpl.html"></dir-pagination-controls>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -87,21 +98,26 @@
     <script src="Content/Scripts/angularLib/angular.js"></script>
     <script src="Content/Scripts/angularLib/angular-animate.js"></script>
     <script src="Content/Scripts/angularLib/angular-ui-router.js"></script>
-    <script src="Content/Scripts/angularLib/angular-ui/ui-bootstrap-tpls.js"></script>
-    <script src="Content/Scripts/angularLib/angular-ui/ui-bootstrap.js"></script>
 
-    <script src="Content/Scripts/angularApp/news/news.js"></script>
-    <script src="Content/Scripts/angularApp/app.js"></script>
+
+    <script src="Content/Scripts/angularApp/app.js"></script>   
+    <script src="Content/Scripts/angularApp/news/news.js"></script>   
+    <script src="Content/Scripts/angularApp/page-controls/pageControls.js"></script>  
+
+    <script src="Content/Scripts/angularApp/Submit-Directive.js"></script>
     <script src="Content/Scripts/angularApp/guidGenerator.js"></script>
 
     <script src="Content/Scripts/angularApp/news/Tag-Service.js"></script>
     <script src="Content/Scripts/angularApp/news/Version-Service.js"></script>
     <script src="Content/Scripts/angularApp/news/News-Service.js"></script>
     <script src="Content/Scripts/angularApp/news/Interpolate-Filter.js"></script>
-    <script src="Content/Scripts/angularApp/news/AppVersion-Directive.js"></script>
-    <script src="Content/Scripts/angularApp/Submit-Directive.js"></script>
-    <script src="Content/Scripts/angularApp/news/News-Controller.js"></script>
+    <script src="Content/Scripts/angularApp/news/AppVersion-Directive.js"></script>   
+    <script src="Content/Scripts/angularApp/news/News-Controller.js"></script>    
 
+    <script src="Content/Scripts/angularApp/page-controls/ItemsPerPage-Filter.js"></script>
+    <script src="Content/Scripts/angularApp/page-controls/Paginate-Directive.js"></script> 
+    <script src="Content/Scripts/angularApp/page-controls/PaginationControls-Directive.js"></script>
+    <script src="Content/Scripts/angularApp/page-controls/Pagination-Service.js"></script>
 
     <script src="Content/Scripts/jquery-1.11.1.js"></script>
     <script src="Content/Scripts/jquery.bpopup.min.js"></script>
