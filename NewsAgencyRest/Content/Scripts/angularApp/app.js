@@ -14,13 +14,13 @@
                     url: '/home',
                     templateUrl: 'partials/home.html'
                 })
-                .state('state1', {
-                    url: '/state1',
-                    templateUrl: 'partials/state1.html'
+                .state('weather', {
+                    url: '/weather',
+                    templateUrl: 'partials/weather.html'
                 })
-                .state('state2', {
-                    url: '/state2',
-                    templateUrl: 'partials/state2.html'
+                .state('currencies', {
+                    url: '/currencies',
+                    templateUrl: 'partials/currencies.html'
                 });
 
         });

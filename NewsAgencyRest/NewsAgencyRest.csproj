@@ -520,8 +520,8 @@
     <Content Include="index.html" />
     <Content Include="partials\dirPagination.tpl.html" />
     <Content Include="partials\home.html" />
-    <Content Include="partials\state1.html" />
-    <Content Include="partials\state2.html" />
+    <Content Include="partials\weather.html" />
+    <Content Include="partials\currencies.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -12,6 +12,7 @@ body {
     background: -ms-linear-gradient(45deg, #3b679e 0%,#2b88d9 50%,#207cca 51%,#7db9e8 100%);
     background: linear-gradient(45deg, #3b679e 0%,#2b88d9 50%,#207cca 51%,#7db9e8 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', endColorstr='#7db9e8',GradientType=1 );
+    font-weight: 600;
 }
 
 input,
@@ -22,7 +23,7 @@ select {
 textarea {
     min-width: 600px;
     max-width: 600px;
-    min-height: 280px;
+    min-height: 70px;
     max-height: 300px;
 }
 
@@ -30,24 +31,23 @@ article {
     margin-right: 10px;
     margin-left: 15px;
     margin-top: 5px;
-    overflow: hidden;
-    border-radius: 50%;
+    border-radius: 10%;
     position: relative;
 }
 
     article:hover {
-        -moz-transform: scale(0.98);
-        -ms-transform: scale(0.98);
-        -o-transform: scale(0.98);
-        -webkit-transform: scale(0.98);
-        transform: scale(0.98);
-        border: 3px solid #3b679e;
-        border: 3px solid rgba(59, 103, 158, 0.84);
+        border: 2px solid #3b679e;
+        border: 2px solid rgba(59, 103, 158, 0.84);
     }
 
-ul li {
-    list-style: none;
+ul {
+    display: inline-block;
 }
+
+    ul li {
+        list-style: none;
+        display: inline-block;
+    }
 
 .clear {
     overflow: hidden;
@@ -121,4 +121,17 @@ ul li {
 
 #page-number {
     width: 80px;
+}
+
+.news-content {
+    padding-top: 20px;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-bottom: 20px;
+    border-left: 4px solid indianred;
+    border-right: 4px solid indianred;
+}
+
+textarea.input {
+    height: 50px !important;
 }
