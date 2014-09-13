@@ -9,8 +9,7 @@ filter on categories and the text of news.
 
 
 Minimum set of components:
-
-angular controller, directive, service, filter.
+- angular controller, directive, service, filter.
 
 
 Should be used REST service (web API), UI routing.
